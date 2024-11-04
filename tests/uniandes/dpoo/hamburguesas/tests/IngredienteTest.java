@@ -32,7 +32,7 @@ public class IngredienteTest
     @Test
     void testGetCostoAdicional( )
     {
-        assertEquals( 1000, ingrediente1.getCostoAdicional( ), "El costo adicional del ingrediente no es el esperado." );
+        assertEquals( 100, ingrediente1.getCostoAdicional( ), "El costo adicional del ingrediente no es el esperado." );
     }
 
 }

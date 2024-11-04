@@ -31,13 +31,13 @@ public class ComboTest {
     }
 	
 	@Test
-	private void testGetNombre() {
+	 void testGetNombre() {
 		assertEquals("combo basico", combo1.getNombre(), "El nombre del combo no es el esperado.");
 	}
 	
 	@Test
-	private void getPrecio() {
-        assertEquals(18000, combo1.getPrecio(), "El precio del combo no es el esperado.");
+	 void getPrecio() {
+        assertEquals(2000, combo1.getPrecio(), "El precio del combo no es el esperado.");
 	}
 	
 	

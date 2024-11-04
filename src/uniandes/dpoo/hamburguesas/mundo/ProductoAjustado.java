@@ -45,9 +45,24 @@ public class ProductoAjustado implements Producto
     @Override
     public int getPrecio( )
     {
-        return 0;
+    	
+    	int valor = 0;
+        for( Ingrediente item : agregados )
+        {
+            valor += item.getCostoAdicional( );
+        }
+        int rta = productoBase.getPrecio( ) + valor;
+        return rta;
     }
 
+    public void add(Ingrediente ingrediente) {
+    	agregados.add(ingrediente);
+    }
+    
+    public void remove(Ingrediente ingrediente) {
+    	eliminados.add(ingrediente);
+    }
+    
     /**
      * Genera el texto que debe aparecer en la factura.
      * 
@@ -72,5 +87,6 @@ public class ProductoAjustado implements Producto
 
         return sb.toString( );
     }
+
 
 }
