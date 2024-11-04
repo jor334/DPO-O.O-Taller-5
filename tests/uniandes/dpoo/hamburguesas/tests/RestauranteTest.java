@@ -1,7 +1,11 @@
 package uniandes.dpoo.hamburguesas.tests;
+import uniandes.dpoo.hamburguesas.excepciones.HamburguesaException;
 import uniandes.dpoo.hamburguesas.excepciones.YaHayUnPedidoEnCursoException;
 import uniandes.dpoo.hamburguesas.mundo.*;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
@@ -46,5 +50,34 @@ public class RestauranteTest {
 	void testGetMenuBase() {
 		ArrayList<ProductoMenu> menuBase = restaurante1.getMenuBase();
         assertNotNull(menuBase, "El menu base no debería ser null.");
+	}
+	
+	@Test
+	void testGetMenuCombos() {
+		ArrayList<Combo> menuCombos = restaurante1.getMenuCombos();
+		assertNotNull(menuCombos, "El menu de combos no debería ser null.");
+	}
+	
+	@Test
+    void testGetIngredientes() {
+        ArrayList<Ingrediente> ingredientes = restaurante1.getIngredientes();
+        assertNotNull(ingredientes, "La lista de ingredientes no debería ser null.");
+    }
+	
+	@Test
+    void cargarInformacionRestaurante() throws HamburguesaException, NumberFormatException,IOException {
+        File archivoIngredientes = new File("data/ingredientes.txt");
+        File archivoMenu = new File("data/menuBase.txt");
+        File archivoCombos = new File("data/combos.txt");
+
+        restaurante1.cargarInformacionRestaurante(archivoIngredientes, archivoMenu, archivoCombos);
+        assertNotNull(restaurante1.getIngredientes(), "La lista de ingredientes no debería ser null.");
+        assertNotNull(restaurante1.getMenuBase(), "El menu base no debería ser null.");
+        assertNotNull(restaurante1.getMenuCombos(), "El menu de combos no debería ser null.");
+    }
+	
+	@Test
+	void testCargarIngredientes() {
+		
 	}
 }
